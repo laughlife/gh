@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlight.mapper.BasicInformationMapper">
+  <resultMap id="BaseResultMap" type="com.mlight.model.BasicInformation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="enterprise_name" jdbcType="VARCHAR" property="enterpriseName" />
+    <result column="area_dm" jdbcType="VARCHAR" property="areaDm" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="production_address" jdbcType="VARCHAR" property="productionAddress" />
+    <result column="area_property_dm" jdbcType="VARCHAR" property="areaPropertyDm" />
+    <result column="area_property" jdbcType="VARCHAR" property="areaProperty" />
+    <result column="legal_representative" jdbcType="VARCHAR" property="legalRepresentative" />
+    <result column="legal_representative_phone" jdbcType="VARCHAR" property="legalRepresentativePhone" />
+    <result column="security_officer" jdbcType="VARCHAR" property="securityOfficer" />
+    <result column="security_officer_phone" jdbcType="VARCHAR" property="securityOfficerPhone" />
+    <result column="establish_date" jdbcType="TIMESTAMP" property="establishDate" />
+    <result column="registered_capital" jdbcType="VARCHAR" property="registeredCapital" />
+    <result column="economic_type_dm" jdbcType="VARCHAR" property="economicTypeDm" />
+    <result column="economic_type" jdbcType="VARCHAR" property="economicType" />
+    <result column="operation_period_begin" jdbcType="TIMESTAMP" property="operationPeriodBegin" />
+    <result column="operation_period_end" jdbcType="TIMESTAMP" property="operationPeriodEnd" />
+    <result column="scope_of_operation" jdbcType="VARCHAR" property="scopeOfOperation" />
+    <result column="industry_nature_dm" jdbcType="VARCHAR" property="industryNatureDm" />
+    <result column="industry_nature" jdbcType="VARCHAR" property="industryNature" />
+    <result column="enterprise_scale_dm" jdbcType="VARCHAR" property="enterpriseScaleDm" />
+    <result column="enterprise_scale" jdbcType="VARCHAR" property="enterpriseScale" />
+    <result column="covering_area" jdbcType="VARCHAR" property="coveringArea" />
+    <result column="main_material" jdbcType="VARCHAR" property="mainMaterial" />
+    <result column="main_product" jdbcType="VARCHAR" property="mainProduct" />
+    <result column="number_of_staff" jdbcType="VARCHAR" property="numberOfStaff" />
+    <result column="annual_revenue" jdbcType="VARCHAR" property="annualRevenue" />
+    <result column="safety_management_dm" jdbcType="VARCHAR" property="safetyManagementDm" />
+    <result column="safety_management" jdbcType="VARCHAR" property="safetyManagement" />
+    <result column="production_equipment_no" jdbcType="VARCHAR" property="productionEquipmentNo" />
+    <result column="security_manager_no" jdbcType="VARCHAR" property="securityManagerNo" />
+    <result column="special_operator_no" jdbcType="VARCHAR" property="specialOperatorNo" />
+    <result column="safety_production_permit_dm" jdbcType="VARCHAR" property="safetyProductionPermitDm" />
+    <result column="safety_production_permit" jdbcType="VARCHAR" property="safetyProductionPermit" />
+    <result column="safety_production_permit_no" jdbcType="VARCHAR" property="safetyProductionPermitNo" />
+    <result column="safety_production_permit_begin" jdbcType="TIMESTAMP" property="safetyProductionPermitBegin" />
+    <result column="safety_production_permit_end" jdbcType="TIMESTAMP" property="safetyProductionPermitEnd" />
+    <result column="standardization_dm" jdbcType="VARCHAR" property="standardizationDm" />
+    <result column="standardization" jdbcType="VARCHAR" property="standardization" />
+    <result column="standardization_card_no" jdbcType="VARCHAR" property="standardizationCardNo" />
+    <result column="standardization_card_date" jdbcType="TIMESTAMP" property="standardizationCardDate" />
+    <result column="record_dm" jdbcType="VARCHAR" property="recordDm" />
+    <result column="record" jdbcType="VARCHAR" property="record" />
+    <result column="record_no" jdbcType="VARCHAR" property="recordNo" />
+    <result column="record_date" jdbcType="TIMESTAMP" property="recordDate" />
+    <result column="declare_dm" jdbcType="VARCHAR" property="declareDm" />
+    <result column="declare_mc" jdbcType="VARCHAR" property="declareMc" />
+    <result column="declare_no" jdbcType="VARCHAR" property="declareNo" />
+    <result column="declare_number" jdbcType="VARCHAR" property="declareNumber" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, enterprise_name, area_dm, area, post_code, production_address, area_property_dm, 
+    area_property, legal_representative, legal_representative_phone, security_officer, 
+    security_officer_phone, establish_date, registered_capital, economic_type_dm, economic_type, 
+    operation_period_begin, operation_period_end, scope_of_operation, industry_nature_dm, 
+    industry_nature, enterprise_scale_dm, enterprise_scale, covering_area, main_material, 
+    main_product, number_of_staff, annual_revenue, safety_management_dm, safety_management, 
+    production_equipment_no, security_manager_no, special_operator_no, safety_production_permit_dm, 
+    safety_production_permit, safety_production_permit_no, safety_production_permit_begin, 
+    safety_production_permit_end, standardization_dm, standardization, standardization_card_no, 
+    standardization_card_date, record_dm, record, record_no, record_date, declare_dm, 
+    declare_mc, declare_no, declare_number
+  </sql>
+  <select id="selectByExample" parameterType="com.mlight.model.BasicInformationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_basic_information
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_basic_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_basic_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mlight.model.BasicInformationExample">
+    delete from t_basic_information
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mlight.model.BasicInformation">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_basic_information (enterprise_name, area_dm, area, 
+      post_code, production_address, area_property_dm, 
+      area_property, legal_representative, legal_representative_phone, 
+      security_officer, security_officer_phone, 
+      establish_date, registered_capital, economic_type_dm, 
+      economic_type, operation_period_begin, operation_period_end, 
+      scope_of_operation, industry_nature_dm, industry_nature, 
+      enterprise_scale_dm, enterprise_scale, covering_area, 
+      main_material, main_product, number_of_staff, 
+      annual_revenue, safety_management_dm, safety_management, 
+      production_equipment_no, security_manager_no, 
+      special_operator_no, safety_production_permit_dm, 
+      safety_production_permit, safety_production_permit_no, 
+      safety_production_permit_begin, safety_production_permit_end, 
+      standardization_dm, standardization, standardization_card_no, 
+      standardization_card_date, record_dm, record, 
+      record_no, record_date, declare_dm, 
+      declare_mc, declare_no, declare_number
+      )
+    values (#{enterpriseName,jdbcType=VARCHAR}, #{areaDm,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{postCode,jdbcType=VARCHAR}, #{productionAddress,jdbcType=VARCHAR}, #{areaPropertyDm,jdbcType=VARCHAR}, 
+      #{areaProperty,jdbcType=VARCHAR}, #{legalRepresentative,jdbcType=VARCHAR}, #{legalRepresentativePhone,jdbcType=VARCHAR}, 
+      #{securityOfficer,jdbcType=VARCHAR}, #{securityOfficerPhone,jdbcType=VARCHAR}, 
+      #{establishDate,jdbcType=TIMESTAMP}, #{registeredCapital,jdbcType=VARCHAR}, #{economicTypeDm,jdbcType=VARCHAR}, 
+      #{economicType,jdbcType=VARCHAR}, #{operationPeriodBegin,jdbcType=TIMESTAMP}, #{operationPeriodEnd,jdbcType=TIMESTAMP}, 
+      #{scopeOfOperation,jdbcType=VARCHAR}, #{industryNatureDm,jdbcType=VARCHAR}, #{industryNature,jdbcType=VARCHAR}, 
+      #{enterpriseScaleDm,jdbcType=VARCHAR}, #{enterpriseScale,jdbcType=VARCHAR}, #{coveringArea,jdbcType=VARCHAR}, 
+      #{mainMaterial,jdbcType=VARCHAR}, #{mainProduct,jdbcType=VARCHAR}, #{numberOfStaff,jdbcType=VARCHAR}, 
+      #{annualRevenue,jdbcType=VARCHAR}, #{safetyManagementDm,jdbcType=VARCHAR}, #{safetyManagement,jdbcType=VARCHAR}, 
+      #{productionEquipmentNo,jdbcType=VARCHAR}, #{securityManagerNo,jdbcType=VARCHAR}, 
+      #{specialOperatorNo,jdbcType=VARCHAR}, #{safetyProductionPermitDm,jdbcType=VARCHAR}, 
+      #{safetyProductionPermit,jdbcType=VARCHAR}, #{safetyProductionPermitNo,jdbcType=VARCHAR}, 
+      #{safetyProductionPermitBegin,jdbcType=TIMESTAMP}, #{safetyProductionPermitEnd,jdbcType=TIMESTAMP}, 
+      #{standardizationDm,jdbcType=VARCHAR}, #{standardization,jdbcType=VARCHAR}, #{standardizationCardNo,jdbcType=VARCHAR}, 
+      #{standardizationCardDate,jdbcType=TIMESTAMP}, #{recordDm,jdbcType=VARCHAR}, #{record,jdbcType=VARCHAR}, 
+      #{recordNo,jdbcType=VARCHAR}, #{recordDate,jdbcType=TIMESTAMP}, #{declareDm,jdbcType=VARCHAR}, 
+      #{declareMc,jdbcType=VARCHAR}, #{declareNo,jdbcType=VARCHAR}, #{declareNumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mlight.model.BasicInformation">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_basic_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="enterpriseName != null">
+        enterprise_name,
+      </if>
+      <if test="areaDm != null">
+        area_dm,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="postCode != null">
+        post_code,
+      </if>
+      <if test="productionAddress != null">
+        production_address,
+      </if>
+      <if test="areaPropertyDm != null">
+        area_property_dm,
+      </if>
+      <if test="areaProperty != null">
+        area_property,
+      </if>
+      <if test="legalRepresentative != null">
+        legal_representative,
+      </if>
+      <if test="legalRepresentativePhone != null">
+        legal_representative_phone,
+      </if>
+      <if test="securityOfficer != null">
+        security_officer,
+      </if>
+      <if test="securityOfficerPhone != null">
+        security_officer_phone,
+      </if>
+      <if test="establishDate != null">
+        establish_date,
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital,
+      </if>
+      <if test="economicTypeDm != null">
+        economic_type_dm,
+      </if>
+      <if test="economicType != null">
+        economic_type,
+      </if>
+      <if test="operationPeriodBegin != null">
+        operation_period_begin,
+      </if>
+      <if test="operationPeriodEnd != null">
+        operation_period_end,
+      </if>
+      <if test="scopeOfOperation != null">
+        scope_of_operation,
+      </if>
+      <if test="industryNatureDm != null">
+        industry_nature_dm,
+      </if>
+      <if test="industryNature != null">
+        industry_nature,
+      </if>
+      <if test="enterpriseScaleDm != null">
+        enterprise_scale_dm,
+      </if>
+      <if test="enterpriseScale != null">
+        enterprise_scale,
+      </if>
+      <if test="coveringArea != null">
+        covering_area,
+      </if>
+      <if test="mainMaterial != null">
+        main_material,
+      </if>
+      <if test="mainProduct != null">
+        main_product,
+      </if>
+      <if test="numberOfStaff != null">
+        number_of_staff,
+      </if>
+      <if test="annualRevenue != null">
+        annual_revenue,
+      </if>
+      <if test="safetyManagementDm != null">
+        safety_management_dm,
+      </if>
+      <if test="safetyManagement != null">
+        safety_management,
+      </if>
+      <if test="productionEquipmentNo != null">
+        production_equipment_no,
+      </if>
+      <if test="securityManagerNo != null">
+        security_manager_no,
+      </if>
+      <if test="specialOperatorNo != null">
+        special_operator_no,
+      </if>
+      <if test="safetyProductionPermitDm != null">
+        safety_production_permit_dm,
+      </if>
+      <if test="safetyProductionPermit != null">
+        safety_production_permit,
+      </if>
+      <if test="safetyProductionPermitNo != null">
+        safety_production_permit_no,
+      </if>
+      <if test="safetyProductionPermitBegin != null">
+        safety_production_permit_begin,
+      </if>
+      <if test="safetyProductionPermitEnd != null">
+        safety_production_permit_end,
+      </if>
+      <if test="standardizationDm != null">
+        standardization_dm,
+      </if>
+      <if test="standardization != null">
+        standardization,
+      </if>
+      <if test="standardizationCardNo != null">
+        standardization_card_no,
+      </if>
+      <if test="standardizationCardDate != null">
+        standardization_card_date,
+      </if>
+      <if test="recordDm != null">
+        record_dm,
+      </if>
+      <if test="record != null">
+        record,
+      </if>
+      <if test="recordNo != null">
+        record_no,
+      </if>
+      <if test="recordDate != null">
+        record_date,
+      </if>
+      <if test="declareDm != null">
+        declare_dm,
+      </if>
+      <if test="declareMc != null">
+        declare_mc,
+      </if>
+      <if test="declareNo != null">
+        declare_no,
+      </if>
+      <if test="declareNumber != null">
+        declare_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="enterpriseName != null">
+        #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaDm != null">
+        #{areaDm,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productionAddress != null">
+        #{productionAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="areaPropertyDm != null">
+        #{areaPropertyDm,jdbcType=VARCHAR},
+      </if>
+      <if test="areaProperty != null">
+        #{areaProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null">
+        #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentativePhone != null">
+        #{legalRepresentativePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="securityOfficer != null">
+        #{securityOfficer,jdbcType=VARCHAR},
+      </if>
+      <if test="securityOfficerPhone != null">
+        #{securityOfficerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null">
+        #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registeredCapital != null">
+        #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="economicTypeDm != null">
+        #{economicTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="economicType != null">
+        #{economicType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationPeriodBegin != null">
+        #{operationPeriodBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationPeriodEnd != null">
+        #{operationPeriodEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scopeOfOperation != null">
+        #{scopeOfOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="industryNatureDm != null">
+        #{industryNatureDm,jdbcType=VARCHAR},
+      </if>
+      <if test="industryNature != null">
+        #{industryNature,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseScaleDm != null">
+        #{enterpriseScaleDm,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseScale != null">
+        #{enterpriseScale,jdbcType=VARCHAR},
+      </if>
+      <if test="coveringArea != null">
+        #{coveringArea,jdbcType=VARCHAR},
+      </if>
+      <if test="mainMaterial != null">
+        #{mainMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="mainProduct != null">
+        #{mainProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfStaff != null">
+        #{numberOfStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="annualRevenue != null">
+        #{annualRevenue,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyManagementDm != null">
+        #{safetyManagementDm,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyManagement != null">
+        #{safetyManagement,jdbcType=VARCHAR},
+      </if>
+      <if test="productionEquipmentNo != null">
+        #{productionEquipmentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="securityManagerNo != null">
+        #{securityManagerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="specialOperatorNo != null">
+        #{specialOperatorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyProductionPermitDm != null">
+        #{safetyProductionPermitDm,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyProductionPermit != null">
+        #{safetyProductionPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyProductionPermitNo != null">
+        #{safetyProductionPermitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyProductionPermitBegin != null">
+        #{safetyProductionPermitBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="safetyProductionPermitEnd != null">
+        #{safetyProductionPermitEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="standardizationDm != null">
+        #{standardizationDm,jdbcType=VARCHAR},
+      </if>
+      <if test="standardization != null">
+        #{standardization,jdbcType=VARCHAR},
+      </if>
+      <if test="standardizationCardNo != null">
+        #{standardizationCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="standardizationCardDate != null">
+        #{standardizationCardDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordDm != null">
+        #{recordDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record != null">
+        #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="recordNo != null">
+        #{recordNo,jdbcType=VARCHAR},
+      </if>
+      <if test="recordDate != null">
+        #{recordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="declareDm != null">
+        #{declareDm,jdbcType=VARCHAR},
+      </if>
+      <if test="declareMc != null">
+        #{declareMc,jdbcType=VARCHAR},
+      </if>
+      <if test="declareNo != null">
+        #{declareNo,jdbcType=VARCHAR},
+      </if>
+      <if test="declareNumber != null">
+        #{declareNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mlight.model.BasicInformationExample" resultType="java.lang.Long">
+    select count(*) from t_basic_information
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_basic_information
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.enterpriseName != null">
+        enterprise_name = #{record.enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaDm != null">
+        area_dm = #{record.areaDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null">
+        area = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postCode != null">
+        post_code = #{record.postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productionAddress != null">
+        production_address = #{record.productionAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaPropertyDm != null">
+        area_property_dm = #{record.areaPropertyDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaProperty != null">
+        area_property = #{record.areaProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalRepresentative != null">
+        legal_representative = #{record.legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalRepresentativePhone != null">
+        legal_representative_phone = #{record.legalRepresentativePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securityOfficer != null">
+        security_officer = #{record.securityOfficer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securityOfficerPhone != null">
+        security_officer_phone = #{record.securityOfficerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.establishDate != null">
+        establish_date = #{record.establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.registeredCapital != null">
+        registered_capital = #{record.registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.economicTypeDm != null">
+        economic_type_dm = #{record.economicTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.economicType != null">
+        economic_type = #{record.economicType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operationPeriodBegin != null">
+        operation_period_begin = #{record.operationPeriodBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operationPeriodEnd != null">
+        operation_period_end = #{record.operationPeriodEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.scopeOfOperation != null">
+        scope_of_operation = #{record.scopeOfOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.industryNatureDm != null">
+        industry_nature_dm = #{record.industryNatureDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.industryNature != null">
+        industry_nature = #{record.industryNature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enterpriseScaleDm != null">
+        enterprise_scale_dm = #{record.enterpriseScaleDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enterpriseScale != null">
+        enterprise_scale = #{record.enterpriseScale,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coveringArea != null">
+        covering_area = #{record.coveringArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainMaterial != null">
+        main_material = #{record.mainMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainProduct != null">
+        main_product = #{record.mainProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numberOfStaff != null">
+        number_of_staff = #{record.numberOfStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="record.annualRevenue != null">
+        annual_revenue = #{record.annualRevenue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safetyManagementDm != null">
+        safety_management_dm = #{record.safetyManagementDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safetyManagement != null">
+        safety_management = #{record.safetyManagement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productionEquipmentNo != null">
+        production_equipment_no = #{record.productionEquipmentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.securityManagerNo != null">
+        security_manager_no = #{record.securityManagerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialOperatorNo != null">
+        special_operator_no = #{record.specialOperatorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safetyProductionPermitDm != null">
+        safety_production_permit_dm = #{record.safetyProductionPermitDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safetyProductionPermit != null">
+        safety_production_permit = #{record.safetyProductionPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safetyProductionPermitNo != null">
+        safety_production_permit_no = #{record.safetyProductionPermitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.safetyProductionPermitBegin != null">
+        safety_production_permit_begin = #{record.safetyProductionPermitBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.safetyProductionPermitEnd != null">
+        safety_production_permit_end = #{record.safetyProductionPermitEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.standardizationDm != null">
+        standardization_dm = #{record.standardizationDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standardization != null">
+        standardization = #{record.standardization,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standardizationCardNo != null">
+        standardization_card_no = #{record.standardizationCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.standardizationCardDate != null">
+        standardization_card_date = #{record.standardizationCardDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recordDm != null">
+        record_dm = #{record.recordDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.record != null">
+        record = #{record.record,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordNo != null">
+        record_no = #{record.recordNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordDate != null">
+        record_date = #{record.recordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.declareDm != null">
+        declare_dm = #{record.declareDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.declareMc != null">
+        declare_mc = #{record.declareMc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.declareNo != null">
+        declare_no = #{record.declareNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.declareNumber != null">
+        declare_number = #{record.declareNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_basic_information
+    set id = #{record.id,jdbcType=INTEGER},
+      enterprise_name = #{record.enterpriseName,jdbcType=VARCHAR},
+      area_dm = #{record.areaDm,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=VARCHAR},
+      post_code = #{record.postCode,jdbcType=VARCHAR},
+      production_address = #{record.productionAddress,jdbcType=VARCHAR},
+      area_property_dm = #{record.areaPropertyDm,jdbcType=VARCHAR},
+      area_property = #{record.areaProperty,jdbcType=VARCHAR},
+      legal_representative = #{record.legalRepresentative,jdbcType=VARCHAR},
+      legal_representative_phone = #{record.legalRepresentativePhone,jdbcType=VARCHAR},
+      security_officer = #{record.securityOfficer,jdbcType=VARCHAR},
+      security_officer_phone = #{record.securityOfficerPhone,jdbcType=VARCHAR},
+      establish_date = #{record.establishDate,jdbcType=TIMESTAMP},
+      registered_capital = #{record.registeredCapital,jdbcType=VARCHAR},
+      economic_type_dm = #{record.economicTypeDm,jdbcType=VARCHAR},
+      economic_type = #{record.economicType,jdbcType=VARCHAR},
+      operation_period_begin = #{record.operationPeriodBegin,jdbcType=TIMESTAMP},
+      operation_period_end = #{record.operationPeriodEnd,jdbcType=TIMESTAMP},
+      scope_of_operation = #{record.scopeOfOperation,jdbcType=VARCHAR},
+      industry_nature_dm = #{record.industryNatureDm,jdbcType=VARCHAR},
+      industry_nature = #{record.industryNature,jdbcType=VARCHAR},
+      enterprise_scale_dm = #{record.enterpriseScaleDm,jdbcType=VARCHAR},
+      enterprise_scale = #{record.enterpriseScale,jdbcType=VARCHAR},
+      covering_area = #{record.coveringArea,jdbcType=VARCHAR},
+      main_material = #{record.mainMaterial,jdbcType=VARCHAR},
+      main_product = #{record.mainProduct,jdbcType=VARCHAR},
+      number_of_staff = #{record.numberOfStaff,jdbcType=VARCHAR},
+      annual_revenue = #{record.annualRevenue,jdbcType=VARCHAR},
+      safety_management_dm = #{record.safetyManagementDm,jdbcType=VARCHAR},
+      safety_management = #{record.safetyManagement,jdbcType=VARCHAR},
+      production_equipment_no = #{record.productionEquipmentNo,jdbcType=VARCHAR},
+      security_manager_no = #{record.securityManagerNo,jdbcType=VARCHAR},
+      special_operator_no = #{record.specialOperatorNo,jdbcType=VARCHAR},
+      safety_production_permit_dm = #{record.safetyProductionPermitDm,jdbcType=VARCHAR},
+      safety_production_permit = #{record.safetyProductionPermit,jdbcType=VARCHAR},
+      safety_production_permit_no = #{record.safetyProductionPermitNo,jdbcType=VARCHAR},
+      safety_production_permit_begin = #{record.safetyProductionPermitBegin,jdbcType=TIMESTAMP},
+      safety_production_permit_end = #{record.safetyProductionPermitEnd,jdbcType=TIMESTAMP},
+      standardization_dm = #{record.standardizationDm,jdbcType=VARCHAR},
+      standardization = #{record.standardization,jdbcType=VARCHAR},
+      standardization_card_no = #{record.standardizationCardNo,jdbcType=VARCHAR},
+      standardization_card_date = #{record.standardizationCardDate,jdbcType=TIMESTAMP},
+      record_dm = #{record.recordDm,jdbcType=VARCHAR},
+      record = #{record.record,jdbcType=VARCHAR},
+      record_no = #{record.recordNo,jdbcType=VARCHAR},
+      record_date = #{record.recordDate,jdbcType=TIMESTAMP},
+      declare_dm = #{record.declareDm,jdbcType=VARCHAR},
+      declare_mc = #{record.declareMc,jdbcType=VARCHAR},
+      declare_no = #{record.declareNo,jdbcType=VARCHAR},
+      declare_number = #{record.declareNumber,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mlight.model.BasicInformation">
+    update t_basic_information
+    <set>
+      <if test="enterpriseName != null">
+        enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaDm != null">
+        area_dm = #{areaDm,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productionAddress != null">
+        production_address = #{productionAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="areaPropertyDm != null">
+        area_property_dm = #{areaPropertyDm,jdbcType=VARCHAR},
+      </if>
+      <if test="areaProperty != null">
+        area_property = #{areaProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null">
+        legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentativePhone != null">
+        legal_representative_phone = #{legalRepresentativePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="securityOfficer != null">
+        security_officer = #{securityOfficer,jdbcType=VARCHAR},
+      </if>
+      <if test="securityOfficerPhone != null">
+        security_officer_phone = #{securityOfficerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null">
+        establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="economicTypeDm != null">
+        economic_type_dm = #{economicTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="economicType != null">
+        economic_type = #{economicType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationPeriodBegin != null">
+        operation_period_begin = #{operationPeriodBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operationPeriodEnd != null">
+        operation_period_end = #{operationPeriodEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scopeOfOperation != null">
+        scope_of_operation = #{scopeOfOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="industryNatureDm != null">
+        industry_nature_dm = #{industryNatureDm,jdbcType=VARCHAR},
+      </if>
+      <if test="industryNature != null">
+        industry_nature = #{industryNature,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseScaleDm != null">
+        enterprise_scale_dm = #{enterpriseScaleDm,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseScale != null">
+        enterprise_scale = #{enterpriseScale,jdbcType=VARCHAR},
+      </if>
+      <if test="coveringArea != null">
+        covering_area = #{coveringArea,jdbcType=VARCHAR},
+      </if>
+      <if test="mainMaterial != null">
+        main_material = #{mainMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="mainProduct != null">
+        main_product = #{mainProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfStaff != null">
+        number_of_staff = #{numberOfStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="annualRevenue != null">
+        annual_revenue = #{annualRevenue,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyManagementDm != null">
+        safety_management_dm = #{safetyManagementDm,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyManagement != null">
+        safety_management = #{safetyManagement,jdbcType=VARCHAR},
+      </if>
+      <if test="productionEquipmentNo != null">
+        production_equipment_no = #{productionEquipmentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="securityManagerNo != null">
+        security_manager_no = #{securityManagerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="specialOperatorNo != null">
+        special_operator_no = #{specialOperatorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyProductionPermitDm != null">
+        safety_production_permit_dm = #{safetyProductionPermitDm,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyProductionPermit != null">
+        safety_production_permit = #{safetyProductionPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyProductionPermitNo != null">
+        safety_production_permit_no = #{safetyProductionPermitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyProductionPermitBegin != null">
+        safety_production_permit_begin = #{safetyProductionPermitBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="safetyProductionPermitEnd != null">
+        safety_production_permit_end = #{safetyProductionPermitEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="standardizationDm != null">
+        standardization_dm = #{standardizationDm,jdbcType=VARCHAR},
+      </if>
+      <if test="standardization != null">
+        standardization = #{standardization,jdbcType=VARCHAR},
+      </if>
+      <if test="standardizationCardNo != null">
+        standardization_card_no = #{standardizationCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="standardizationCardDate != null">
+        standardization_card_date = #{standardizationCardDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recordDm != null">
+        record_dm = #{recordDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record != null">
+        record = #{record,jdbcType=VARCHAR},
+      </if>
+      <if test="recordNo != null">
+        record_no = #{recordNo,jdbcType=VARCHAR},
+      </if>
+      <if test="recordDate != null">
+        record_date = #{recordDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="declareDm != null">
+        declare_dm = #{declareDm,jdbcType=VARCHAR},
+      </if>
+      <if test="declareMc != null">
+        declare_mc = #{declareMc,jdbcType=VARCHAR},
+      </if>
+      <if test="declareNo != null">
+        declare_no = #{declareNo,jdbcType=VARCHAR},
+      </if>
+      <if test="declareNumber != null">
+        declare_number = #{declareNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mlight.model.BasicInformation">
+    update t_basic_information
+    set enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      area_dm = #{areaDm,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      production_address = #{productionAddress,jdbcType=VARCHAR},
+      area_property_dm = #{areaPropertyDm,jdbcType=VARCHAR},
+      area_property = #{areaProperty,jdbcType=VARCHAR},
+      legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      legal_representative_phone = #{legalRepresentativePhone,jdbcType=VARCHAR},
+      security_officer = #{securityOfficer,jdbcType=VARCHAR},
+      security_officer_phone = #{securityOfficerPhone,jdbcType=VARCHAR},
+      establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      economic_type_dm = #{economicTypeDm,jdbcType=VARCHAR},
+      economic_type = #{economicType,jdbcType=VARCHAR},
+      operation_period_begin = #{operationPeriodBegin,jdbcType=TIMESTAMP},
+      operation_period_end = #{operationPeriodEnd,jdbcType=TIMESTAMP},
+      scope_of_operation = #{scopeOfOperation,jdbcType=VARCHAR},
+      industry_nature_dm = #{industryNatureDm,jdbcType=VARCHAR},
+      industry_nature = #{industryNature,jdbcType=VARCHAR},
+      enterprise_scale_dm = #{enterpriseScaleDm,jdbcType=VARCHAR},
+      enterprise_scale = #{enterpriseScale,jdbcType=VARCHAR},
+      covering_area = #{coveringArea,jdbcType=VARCHAR},
+      main_material = #{mainMaterial,jdbcType=VARCHAR},
+      main_product = #{mainProduct,jdbcType=VARCHAR},
+      number_of_staff = #{numberOfStaff,jdbcType=VARCHAR},
+      annual_revenue = #{annualRevenue,jdbcType=VARCHAR},
+      safety_management_dm = #{safetyManagementDm,jdbcType=VARCHAR},
+      safety_management = #{safetyManagement,jdbcType=VARCHAR},
+      production_equipment_no = #{productionEquipmentNo,jdbcType=VARCHAR},
+      security_manager_no = #{securityManagerNo,jdbcType=VARCHAR},
+      special_operator_no = #{specialOperatorNo,jdbcType=VARCHAR},
+      safety_production_permit_dm = #{safetyProductionPermitDm,jdbcType=VARCHAR},
+      safety_production_permit = #{safetyProductionPermit,jdbcType=VARCHAR},
+      safety_production_permit_no = #{safetyProductionPermitNo,jdbcType=VARCHAR},
+      safety_production_permit_begin = #{safetyProductionPermitBegin,jdbcType=TIMESTAMP},
+      safety_production_permit_end = #{safetyProductionPermitEnd,jdbcType=TIMESTAMP},
+      standardization_dm = #{standardizationDm,jdbcType=VARCHAR},
+      standardization = #{standardization,jdbcType=VARCHAR},
+      standardization_card_no = #{standardizationCardNo,jdbcType=VARCHAR},
+      standardization_card_date = #{standardizationCardDate,jdbcType=TIMESTAMP},
+      record_dm = #{recordDm,jdbcType=VARCHAR},
+      record = #{record,jdbcType=VARCHAR},
+      record_no = #{recordNo,jdbcType=VARCHAR},
+      record_date = #{recordDate,jdbcType=TIMESTAMP},
+      declare_dm = #{declareDm,jdbcType=VARCHAR},
+      declare_mc = #{declareMc,jdbcType=VARCHAR},
+      declare_no = #{declareNo,jdbcType=VARCHAR},
+      declare_number = #{declareNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

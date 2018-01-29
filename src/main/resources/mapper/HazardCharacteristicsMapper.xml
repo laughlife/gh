@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlight.mapper.HazardCharacteristicsMapper">
+  <resultMap id="BaseResultMap" type="com.mlight.model.HazardCharacteristics">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="basic_id" jdbcType="INTEGER" property="basicId" />
+    <result column="hazardous_chemicals_dm" jdbcType="VARCHAR" property="hazardousChemicalsDm" />
+    <result column="hazardous_chemicals" jdbcType="VARCHAR" property="hazardousChemicals" />
+    <result column="hazardous_chemicals_type_dm" jdbcType="VARCHAR" property="hazardousChemicalsTypeDm" />
+    <result column="hazardous_chemicals_type" jdbcType="VARCHAR" property="hazardousChemicalsType" />
+    <result column="hazardous_chemicals_type_describe_dm" jdbcType="VARCHAR" property="hazardousChemicalsTypeDescribeDm" />
+    <result column="hazardous_chemicals_type_describe" jdbcType="VARCHAR" property="hazardousChemicalsTypeDescribe" />
+    <result column="hazardous_chemicals_type_other" jdbcType="VARCHAR" property="hazardousChemicalsTypeOther" />
+    <result column="major_hazard_sources_dm" jdbcType="VARCHAR" property="majorHazardSourcesDm" />
+    <result column="major_hazard_sources" jdbcType="VARCHAR" property="majorHazardSources" />
+    <result column="major_hazard_sources_type_dm" jdbcType="VARCHAR" property="majorHazardSourcesTypeDm" />
+    <result column="major_hazard_sources_type" jdbcType="VARCHAR" property="majorHazardSourcesType" />
+    <result column="major_hazard_sources_leval_dm" jdbcType="VARCHAR" property="majorHazardSourcesLevalDm" />
+    <result column="major_hazard_sources_leval" jdbcType="VARCHAR" property="majorHazardSourcesLeval" />
+    <result column="technics_dm" jdbcType="VARCHAR" property="technicsDm" />
+    <result column="technics" jdbcType="VARCHAR" property="technics" />
+    <result column="technics_type_dm" jdbcType="VARCHAR" property="technicsTypeDm" />
+    <result column="technics_type" jdbcType="VARCHAR" property="technicsType" />
+    <result column="emphasis_hazardous_chemicals_dm" jdbcType="VARCHAR" property="emphasisHazardousChemicalsDm" />
+    <result column="emphasis_hazardous_chemicals" jdbcType="VARCHAR" property="emphasisHazardousChemicals" />
+    <result column="emphasis_hazardous_chemicals_names" jdbcType="VARCHAR" property="emphasisHazardousChemicalsNames" />
+    <result column="special_equipment_dm" jdbcType="VARCHAR" property="specialEquipmentDm" />
+    <result column="special_equipment" jdbcType="VARCHAR" property="specialEquipment" />
+    <result column="special_equipment_type_dm" jdbcType="VARCHAR" property="specialEquipmentTypeDm" />
+    <result column="special_equipment_type" jdbcType="VARCHAR" property="specialEquipmentType" />
+    <result column="combustible_dust_dm" jdbcType="VARCHAR" property="combustibleDustDm" />
+    <result column="combustible_dust" jdbcType="VARCHAR" property="combustibleDust" />
+    <result column="combustible_dust_type_dm" jdbcType="VARCHAR" property="combustibleDustTypeDm" />
+    <result column="combustible_dust_type" jdbcType="VARCHAR" property="combustibleDustType" />
+    <result column="dangerous_equipment_dm" jdbcType="VARCHAR" property="dangerousEquipmentDm" />
+    <result column="dangerous_equipment" jdbcType="VARCHAR" property="dangerousEquipment" />
+    <result column="dangerous_equipment_type_dm" jdbcType="VARCHAR" property="dangerousEquipmentTypeDm" />
+    <result column="dangerous_equipment_type" jdbcType="VARCHAR" property="dangerousEquipmentType" />
+    <result column="dangerous_equipment_type_describe_dm" jdbcType="VARCHAR" property="dangerousEquipmentTypeDescribeDm" />
+    <result column="dangerous_equipment_type_describe" jdbcType="VARCHAR" property="dangerousEquipmentTypeDescribe" />
+    <result column="punching_press_machine" jdbcType="VARCHAR" property="punchingPressMachine" />
+    <result column="punching_press_machine_dm" jdbcType="VARCHAR" property="punchingPressMachineDm" />
+    <result column="dangerous_equipment_type_other_dm" jdbcType="VARCHAR" property="dangerousEquipmentTypeOtherDm" />
+    <result column="dangerous_equipment_type_other" jdbcType="VARCHAR" property="dangerousEquipmentTypeOther" />
+    <result column="finite_space_dm" jdbcType="VARCHAR" property="finiteSpaceDm" />
+    <result column="finite_space" jdbcType="VARCHAR" property="finiteSpace" />
+    <result column="ammonia_refrigeration_dm" jdbcType="VARCHAR" property="ammoniaRefrigerationDm" />
+    <result column="ammonia_refrigeration" jdbcType="VARCHAR" property="ammoniaRefrigeration" />
+    <result column="drying_room_dm" jdbcType="VARCHAR" property="dryingRoomDm" />
+    <result column="drying_room" jdbcType="VARCHAR" property="dryingRoom" />
+    <result column="clean_workshop_dm" jdbcType="VARCHAR" property="cleanWorkshopDm" />
+    <result column="clean_workshop" jdbcType="VARCHAR" property="cleanWorkshop" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, basic_id, hazardous_chemicals_dm, hazardous_chemicals, hazardous_chemicals_type_dm, 
+    hazardous_chemicals_type, hazardous_chemicals_type_describe_dm, hazardous_chemicals_type_describe, 
+    hazardous_chemicals_type_other, major_hazard_sources_dm, major_hazard_sources, major_hazard_sources_type_dm, 
+    major_hazard_sources_type, major_hazard_sources_leval_dm, major_hazard_sources_leval, 
+    technics_dm, technics, technics_type_dm, technics_type, emphasis_hazardous_chemicals_dm, 
+    emphasis_hazardous_chemicals, emphasis_hazardous_chemicals_names, special_equipment_dm, 
+    special_equipment, special_equipment_type_dm, special_equipment_type, combustible_dust_dm, 
+    combustible_dust, combustible_dust_type_dm, combustible_dust_type, dangerous_equipment_dm, 
+    dangerous_equipment, dangerous_equipment_type_dm, dangerous_equipment_type, dangerous_equipment_type_describe_dm, 
+    dangerous_equipment_type_describe, punching_press_machine, punching_press_machine_dm, 
+    dangerous_equipment_type_other_dm, dangerous_equipment_type_other, finite_space_dm, 
+    finite_space, ammonia_refrigeration_dm, ammonia_refrigeration, drying_room_dm, drying_room, 
+    clean_workshop_dm, clean_workshop
+  </sql>
+  <select id="selectByExample" parameterType="com.mlight.model.HazardCharacteristicsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_hazard_characteristics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_hazard_characteristics
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_hazard_characteristics
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mlight.model.HazardCharacteristicsExample">
+    delete from t_hazard_characteristics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mlight.model.HazardCharacteristics">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_hazard_characteristics (basic_id, hazardous_chemicals_dm, hazardous_chemicals, 
+      hazardous_chemicals_type_dm, hazardous_chemicals_type, 
+      hazardous_chemicals_type_describe_dm, hazardous_chemicals_type_describe, 
+      hazardous_chemicals_type_other, major_hazard_sources_dm, 
+      major_hazard_sources, major_hazard_sources_type_dm, 
+      major_hazard_sources_type, major_hazard_sources_leval_dm, 
+      major_hazard_sources_leval, technics_dm, technics, 
+      technics_type_dm, technics_type, emphasis_hazardous_chemicals_dm, 
+      emphasis_hazardous_chemicals, emphasis_hazardous_chemicals_names, 
+      special_equipment_dm, special_equipment, special_equipment_type_dm, 
+      special_equipment_type, combustible_dust_dm, 
+      combustible_dust, combustible_dust_type_dm, 
+      combustible_dust_type, dangerous_equipment_dm, 
+      dangerous_equipment, dangerous_equipment_type_dm, 
+      dangerous_equipment_type, dangerous_equipment_type_describe_dm, 
+      dangerous_equipment_type_describe, punching_press_machine, 
+      punching_press_machine_dm, dangerous_equipment_type_other_dm, 
+      dangerous_equipment_type_other, finite_space_dm, 
+      finite_space, ammonia_refrigeration_dm, ammonia_refrigeration, 
+      drying_room_dm, drying_room, clean_workshop_dm, 
+      clean_workshop)
+    values (#{basicId,jdbcType=INTEGER}, #{hazardousChemicalsDm,jdbcType=VARCHAR}, #{hazardousChemicals,jdbcType=VARCHAR}, 
+      #{hazardousChemicalsTypeDm,jdbcType=VARCHAR}, #{hazardousChemicalsType,jdbcType=VARCHAR}, 
+      #{hazardousChemicalsTypeDescribeDm,jdbcType=VARCHAR}, #{hazardousChemicalsTypeDescribe,jdbcType=VARCHAR}, 
+      #{hazardousChemicalsTypeOther,jdbcType=VARCHAR}, #{majorHazardSourcesDm,jdbcType=VARCHAR}, 
+      #{majorHazardSources,jdbcType=VARCHAR}, #{majorHazardSourcesTypeDm,jdbcType=VARCHAR}, 
+      #{majorHazardSourcesType,jdbcType=VARCHAR}, #{majorHazardSourcesLevalDm,jdbcType=VARCHAR}, 
+      #{majorHazardSourcesLeval,jdbcType=VARCHAR}, #{technicsDm,jdbcType=VARCHAR}, #{technics,jdbcType=VARCHAR}, 
+      #{technicsTypeDm,jdbcType=VARCHAR}, #{technicsType,jdbcType=VARCHAR}, #{emphasisHazardousChemicalsDm,jdbcType=VARCHAR}, 
+      #{emphasisHazardousChemicals,jdbcType=VARCHAR}, #{emphasisHazardousChemicalsNames,jdbcType=VARCHAR}, 
+      #{specialEquipmentDm,jdbcType=VARCHAR}, #{specialEquipment,jdbcType=VARCHAR}, #{specialEquipmentTypeDm,jdbcType=VARCHAR}, 
+      #{specialEquipmentType,jdbcType=VARCHAR}, #{combustibleDustDm,jdbcType=VARCHAR}, 
+      #{combustibleDust,jdbcType=VARCHAR}, #{combustibleDustTypeDm,jdbcType=VARCHAR}, 
+      #{combustibleDustType,jdbcType=VARCHAR}, #{dangerousEquipmentDm,jdbcType=VARCHAR}, 
+      #{dangerousEquipment,jdbcType=VARCHAR}, #{dangerousEquipmentTypeDm,jdbcType=VARCHAR}, 
+      #{dangerousEquipmentType,jdbcType=VARCHAR}, #{dangerousEquipmentTypeDescribeDm,jdbcType=VARCHAR}, 
+      #{dangerousEquipmentTypeDescribe,jdbcType=VARCHAR}, #{punchingPressMachine,jdbcType=VARCHAR}, 
+      #{punchingPressMachineDm,jdbcType=VARCHAR}, #{dangerousEquipmentTypeOtherDm,jdbcType=VARCHAR}, 
+      #{dangerousEquipmentTypeOther,jdbcType=VARCHAR}, #{finiteSpaceDm,jdbcType=VARCHAR}, 
+      #{finiteSpace,jdbcType=VARCHAR}, #{ammoniaRefrigerationDm,jdbcType=VARCHAR}, #{ammoniaRefrigeration,jdbcType=VARCHAR}, 
+      #{dryingRoomDm,jdbcType=VARCHAR}, #{dryingRoom,jdbcType=VARCHAR}, #{cleanWorkshopDm,jdbcType=VARCHAR}, 
+      #{cleanWorkshop,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mlight.model.HazardCharacteristics">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_hazard_characteristics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="basicId != null">
+        basic_id,
+      </if>
+      <if test="hazardousChemicalsDm != null">
+        hazardous_chemicals_dm,
+      </if>
+      <if test="hazardousChemicals != null">
+        hazardous_chemicals,
+      </if>
+      <if test="hazardousChemicalsTypeDm != null">
+        hazardous_chemicals_type_dm,
+      </if>
+      <if test="hazardousChemicalsType != null">
+        hazardous_chemicals_type,
+      </if>
+      <if test="hazardousChemicalsTypeDescribeDm != null">
+        hazardous_chemicals_type_describe_dm,
+      </if>
+      <if test="hazardousChemicalsTypeDescribe != null">
+        hazardous_chemicals_type_describe,
+      </if>
+      <if test="hazardousChemicalsTypeOther != null">
+        hazardous_chemicals_type_other,
+      </if>
+      <if test="majorHazardSourcesDm != null">
+        major_hazard_sources_dm,
+      </if>
+      <if test="majorHazardSources != null">
+        major_hazard_sources,
+      </if>
+      <if test="majorHazardSourcesTypeDm != null">
+        major_hazard_sources_type_dm,
+      </if>
+      <if test="majorHazardSourcesType != null">
+        major_hazard_sources_type,
+      </if>
+      <if test="majorHazardSourcesLevalDm != null">
+        major_hazard_sources_leval_dm,
+      </if>
+      <if test="majorHazardSourcesLeval != null">
+        major_hazard_sources_leval,
+      </if>
+      <if test="technicsDm != null">
+        technics_dm,
+      </if>
+      <if test="technics != null">
+        technics,
+      </if>
+      <if test="technicsTypeDm != null">
+        technics_type_dm,
+      </if>
+      <if test="technicsType != null">
+        technics_type,
+      </if>
+      <if test="emphasisHazardousChemicalsDm != null">
+        emphasis_hazardous_chemicals_dm,
+      </if>
+      <if test="emphasisHazardousChemicals != null">
+        emphasis_hazardous_chemicals,
+      </if>
+      <if test="emphasisHazardousChemicalsNames != null">
+        emphasis_hazardous_chemicals_names,
+      </if>
+      <if test="specialEquipmentDm != null">
+        special_equipment_dm,
+      </if>
+      <if test="specialEquipment != null">
+        special_equipment,
+      </if>
+      <if test="specialEquipmentTypeDm != null">
+        special_equipment_type_dm,
+      </if>
+      <if test="specialEquipmentType != null">
+        special_equipment_type,
+      </if>
+      <if test="combustibleDustDm != null">
+        combustible_dust_dm,
+      </if>
+      <if test="combustibleDust != null">
+        combustible_dust,
+      </if>
+      <if test="combustibleDustTypeDm != null">
+        combustible_dust_type_dm,
+      </if>
+      <if test="combustibleDustType != null">
+        combustible_dust_type,
+      </if>
+      <if test="dangerousEquipmentDm != null">
+        dangerous_equipment_dm,
+      </if>
+      <if test="dangerousEquipment != null">
+        dangerous_equipment,
+      </if>
+      <if test="dangerousEquipmentTypeDm != null">
+        dangerous_equipment_type_dm,
+      </if>
+      <if test="dangerousEquipmentType != null">
+        dangerous_equipment_type,
+      </if>
+      <if test="dangerousEquipmentTypeDescribeDm != null">
+        dangerous_equipment_type_describe_dm,
+      </if>
+      <if test="dangerousEquipmentTypeDescribe != null">
+        dangerous_equipment_type_describe,
+      </if>
+      <if test="punchingPressMachine != null">
+        punching_press_machine,
+      </if>
+      <if test="punchingPressMachineDm != null">
+        punching_press_machine_dm,
+      </if>
+      <if test="dangerousEquipmentTypeOtherDm != null">
+        dangerous_equipment_type_other_dm,
+      </if>
+      <if test="dangerousEquipmentTypeOther != null">
+        dangerous_equipment_type_other,
+      </if>
+      <if test="finiteSpaceDm != null">
+        finite_space_dm,
+      </if>
+      <if test="finiteSpace != null">
+        finite_space,
+      </if>
+      <if test="ammoniaRefrigerationDm != null">
+        ammonia_refrigeration_dm,
+      </if>
+      <if test="ammoniaRefrigeration != null">
+        ammonia_refrigeration,
+      </if>
+      <if test="dryingRoomDm != null">
+        drying_room_dm,
+      </if>
+      <if test="dryingRoom != null">
+        drying_room,
+      </if>
+      <if test="cleanWorkshopDm != null">
+        clean_workshop_dm,
+      </if>
+      <if test="cleanWorkshop != null">
+        clean_workshop,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="basicId != null">
+        #{basicId,jdbcType=INTEGER},
+      </if>
+      <if test="hazardousChemicalsDm != null">
+        #{hazardousChemicalsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicals != null">
+        #{hazardousChemicals,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsTypeDm != null">
+        #{hazardousChemicalsTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsType != null">
+        #{hazardousChemicalsType,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsTypeDescribeDm != null">
+        #{hazardousChemicalsTypeDescribeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsTypeDescribe != null">
+        #{hazardousChemicalsTypeDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsTypeOther != null">
+        #{hazardousChemicalsTypeOther,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesDm != null">
+        #{majorHazardSourcesDm,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSources != null">
+        #{majorHazardSources,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesTypeDm != null">
+        #{majorHazardSourcesTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesType != null">
+        #{majorHazardSourcesType,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesLevalDm != null">
+        #{majorHazardSourcesLevalDm,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesLeval != null">
+        #{majorHazardSourcesLeval,jdbcType=VARCHAR},
+      </if>
+      <if test="technicsDm != null">
+        #{technicsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="technics != null">
+        #{technics,jdbcType=VARCHAR},
+      </if>
+      <if test="technicsTypeDm != null">
+        #{technicsTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="technicsType != null">
+        #{technicsType,jdbcType=VARCHAR},
+      </if>
+      <if test="emphasisHazardousChemicalsDm != null">
+        #{emphasisHazardousChemicalsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="emphasisHazardousChemicals != null">
+        #{emphasisHazardousChemicals,jdbcType=VARCHAR},
+      </if>
+      <if test="emphasisHazardousChemicalsNames != null">
+        #{emphasisHazardousChemicalsNames,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEquipmentDm != null">
+        #{specialEquipmentDm,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEquipment != null">
+        #{specialEquipment,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEquipmentTypeDm != null">
+        #{specialEquipmentTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEquipmentType != null">
+        #{specialEquipmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="combustibleDustDm != null">
+        #{combustibleDustDm,jdbcType=VARCHAR},
+      </if>
+      <if test="combustibleDust != null">
+        #{combustibleDust,jdbcType=VARCHAR},
+      </if>
+      <if test="combustibleDustTypeDm != null">
+        #{combustibleDustTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="combustibleDustType != null">
+        #{combustibleDustType,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentDm != null">
+        #{dangerousEquipmentDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipment != null">
+        #{dangerousEquipment,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeDm != null">
+        #{dangerousEquipmentTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentType != null">
+        #{dangerousEquipmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeDescribeDm != null">
+        #{dangerousEquipmentTypeDescribeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeDescribe != null">
+        #{dangerousEquipmentTypeDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="punchingPressMachine != null">
+        #{punchingPressMachine,jdbcType=VARCHAR},
+      </if>
+      <if test="punchingPressMachineDm != null">
+        #{punchingPressMachineDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeOtherDm != null">
+        #{dangerousEquipmentTypeOtherDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeOther != null">
+        #{dangerousEquipmentTypeOther,jdbcType=VARCHAR},
+      </if>
+      <if test="finiteSpaceDm != null">
+        #{finiteSpaceDm,jdbcType=VARCHAR},
+      </if>
+      <if test="finiteSpace != null">
+        #{finiteSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="ammoniaRefrigerationDm != null">
+        #{ammoniaRefrigerationDm,jdbcType=VARCHAR},
+      </if>
+      <if test="ammoniaRefrigeration != null">
+        #{ammoniaRefrigeration,jdbcType=VARCHAR},
+      </if>
+      <if test="dryingRoomDm != null">
+        #{dryingRoomDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dryingRoom != null">
+        #{dryingRoom,jdbcType=VARCHAR},
+      </if>
+      <if test="cleanWorkshopDm != null">
+        #{cleanWorkshopDm,jdbcType=VARCHAR},
+      </if>
+      <if test="cleanWorkshop != null">
+        #{cleanWorkshop,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mlight.model.HazardCharacteristicsExample" resultType="java.lang.Long">
+    select count(*) from t_hazard_characteristics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_hazard_characteristics
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.basicId != null">
+        basic_id = #{record.basicId,jdbcType=INTEGER},
+      </if>
+      <if test="record.hazardousChemicalsDm != null">
+        hazardous_chemicals_dm = #{record.hazardousChemicalsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hazardousChemicals != null">
+        hazardous_chemicals = #{record.hazardousChemicals,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hazardousChemicalsTypeDm != null">
+        hazardous_chemicals_type_dm = #{record.hazardousChemicalsTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hazardousChemicalsType != null">
+        hazardous_chemicals_type = #{record.hazardousChemicalsType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hazardousChemicalsTypeDescribeDm != null">
+        hazardous_chemicals_type_describe_dm = #{record.hazardousChemicalsTypeDescribeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hazardousChemicalsTypeDescribe != null">
+        hazardous_chemicals_type_describe = #{record.hazardousChemicalsTypeDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hazardousChemicalsTypeOther != null">
+        hazardous_chemicals_type_other = #{record.hazardousChemicalsTypeOther,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorHazardSourcesDm != null">
+        major_hazard_sources_dm = #{record.majorHazardSourcesDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorHazardSources != null">
+        major_hazard_sources = #{record.majorHazardSources,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorHazardSourcesTypeDm != null">
+        major_hazard_sources_type_dm = #{record.majorHazardSourcesTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorHazardSourcesType != null">
+        major_hazard_sources_type = #{record.majorHazardSourcesType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorHazardSourcesLevalDm != null">
+        major_hazard_sources_leval_dm = #{record.majorHazardSourcesLevalDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.majorHazardSourcesLeval != null">
+        major_hazard_sources_leval = #{record.majorHazardSourcesLeval,jdbcType=VARCHAR},
+      </if>
+      <if test="record.technicsDm != null">
+        technics_dm = #{record.technicsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.technics != null">
+        technics = #{record.technics,jdbcType=VARCHAR},
+      </if>
+      <if test="record.technicsTypeDm != null">
+        technics_type_dm = #{record.technicsTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.technicsType != null">
+        technics_type = #{record.technicsType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emphasisHazardousChemicalsDm != null">
+        emphasis_hazardous_chemicals_dm = #{record.emphasisHazardousChemicalsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emphasisHazardousChemicals != null">
+        emphasis_hazardous_chemicals = #{record.emphasisHazardousChemicals,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emphasisHazardousChemicalsNames != null">
+        emphasis_hazardous_chemicals_names = #{record.emphasisHazardousChemicalsNames,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialEquipmentDm != null">
+        special_equipment_dm = #{record.specialEquipmentDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialEquipment != null">
+        special_equipment = #{record.specialEquipment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialEquipmentTypeDm != null">
+        special_equipment_type_dm = #{record.specialEquipmentTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialEquipmentType != null">
+        special_equipment_type = #{record.specialEquipmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.combustibleDustDm != null">
+        combustible_dust_dm = #{record.combustibleDustDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.combustibleDust != null">
+        combustible_dust = #{record.combustibleDust,jdbcType=VARCHAR},
+      </if>
+      <if test="record.combustibleDustTypeDm != null">
+        combustible_dust_type_dm = #{record.combustibleDustTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.combustibleDustType != null">
+        combustible_dust_type = #{record.combustibleDustType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dangerousEquipmentDm != null">
+        dangerous_equipment_dm = #{record.dangerousEquipmentDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dangerousEquipment != null">
+        dangerous_equipment = #{record.dangerousEquipment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dangerousEquipmentTypeDm != null">
+        dangerous_equipment_type_dm = #{record.dangerousEquipmentTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dangerousEquipmentType != null">
+        dangerous_equipment_type = #{record.dangerousEquipmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dangerousEquipmentTypeDescribeDm != null">
+        dangerous_equipment_type_describe_dm = #{record.dangerousEquipmentTypeDescribeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dangerousEquipmentTypeDescribe != null">
+        dangerous_equipment_type_describe = #{record.dangerousEquipmentTypeDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.punchingPressMachine != null">
+        punching_press_machine = #{record.punchingPressMachine,jdbcType=VARCHAR},
+      </if>
+      <if test="record.punchingPressMachineDm != null">
+        punching_press_machine_dm = #{record.punchingPressMachineDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dangerousEquipmentTypeOtherDm != null">
+        dangerous_equipment_type_other_dm = #{record.dangerousEquipmentTypeOtherDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dangerousEquipmentTypeOther != null">
+        dangerous_equipment_type_other = #{record.dangerousEquipmentTypeOther,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finiteSpaceDm != null">
+        finite_space_dm = #{record.finiteSpaceDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.finiteSpace != null">
+        finite_space = #{record.finiteSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ammoniaRefrigerationDm != null">
+        ammonia_refrigeration_dm = #{record.ammoniaRefrigerationDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ammoniaRefrigeration != null">
+        ammonia_refrigeration = #{record.ammoniaRefrigeration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dryingRoomDm != null">
+        drying_room_dm = #{record.dryingRoomDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dryingRoom != null">
+        drying_room = #{record.dryingRoom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cleanWorkshopDm != null">
+        clean_workshop_dm = #{record.cleanWorkshopDm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cleanWorkshop != null">
+        clean_workshop = #{record.cleanWorkshop,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_hazard_characteristics
+    set id = #{record.id,jdbcType=INTEGER},
+      basic_id = #{record.basicId,jdbcType=INTEGER},
+      hazardous_chemicals_dm = #{record.hazardousChemicalsDm,jdbcType=VARCHAR},
+      hazardous_chemicals = #{record.hazardousChemicals,jdbcType=VARCHAR},
+      hazardous_chemicals_type_dm = #{record.hazardousChemicalsTypeDm,jdbcType=VARCHAR},
+      hazardous_chemicals_type = #{record.hazardousChemicalsType,jdbcType=VARCHAR},
+      hazardous_chemicals_type_describe_dm = #{record.hazardousChemicalsTypeDescribeDm,jdbcType=VARCHAR},
+      hazardous_chemicals_type_describe = #{record.hazardousChemicalsTypeDescribe,jdbcType=VARCHAR},
+      hazardous_chemicals_type_other = #{record.hazardousChemicalsTypeOther,jdbcType=VARCHAR},
+      major_hazard_sources_dm = #{record.majorHazardSourcesDm,jdbcType=VARCHAR},
+      major_hazard_sources = #{record.majorHazardSources,jdbcType=VARCHAR},
+      major_hazard_sources_type_dm = #{record.majorHazardSourcesTypeDm,jdbcType=VARCHAR},
+      major_hazard_sources_type = #{record.majorHazardSourcesType,jdbcType=VARCHAR},
+      major_hazard_sources_leval_dm = #{record.majorHazardSourcesLevalDm,jdbcType=VARCHAR},
+      major_hazard_sources_leval = #{record.majorHazardSourcesLeval,jdbcType=VARCHAR},
+      technics_dm = #{record.technicsDm,jdbcType=VARCHAR},
+      technics = #{record.technics,jdbcType=VARCHAR},
+      technics_type_dm = #{record.technicsTypeDm,jdbcType=VARCHAR},
+      technics_type = #{record.technicsType,jdbcType=VARCHAR},
+      emphasis_hazardous_chemicals_dm = #{record.emphasisHazardousChemicalsDm,jdbcType=VARCHAR},
+      emphasis_hazardous_chemicals = #{record.emphasisHazardousChemicals,jdbcType=VARCHAR},
+      emphasis_hazardous_chemicals_names = #{record.emphasisHazardousChemicalsNames,jdbcType=VARCHAR},
+      special_equipment_dm = #{record.specialEquipmentDm,jdbcType=VARCHAR},
+      special_equipment = #{record.specialEquipment,jdbcType=VARCHAR},
+      special_equipment_type_dm = #{record.specialEquipmentTypeDm,jdbcType=VARCHAR},
+      special_equipment_type = #{record.specialEquipmentType,jdbcType=VARCHAR},
+      combustible_dust_dm = #{record.combustibleDustDm,jdbcType=VARCHAR},
+      combustible_dust = #{record.combustibleDust,jdbcType=VARCHAR},
+      combustible_dust_type_dm = #{record.combustibleDustTypeDm,jdbcType=VARCHAR},
+      combustible_dust_type = #{record.combustibleDustType,jdbcType=VARCHAR},
+      dangerous_equipment_dm = #{record.dangerousEquipmentDm,jdbcType=VARCHAR},
+      dangerous_equipment = #{record.dangerousEquipment,jdbcType=VARCHAR},
+      dangerous_equipment_type_dm = #{record.dangerousEquipmentTypeDm,jdbcType=VARCHAR},
+      dangerous_equipment_type = #{record.dangerousEquipmentType,jdbcType=VARCHAR},
+      dangerous_equipment_type_describe_dm = #{record.dangerousEquipmentTypeDescribeDm,jdbcType=VARCHAR},
+      dangerous_equipment_type_describe = #{record.dangerousEquipmentTypeDescribe,jdbcType=VARCHAR},
+      punching_press_machine = #{record.punchingPressMachine,jdbcType=VARCHAR},
+      punching_press_machine_dm = #{record.punchingPressMachineDm,jdbcType=VARCHAR},
+      dangerous_equipment_type_other_dm = #{record.dangerousEquipmentTypeOtherDm,jdbcType=VARCHAR},
+      dangerous_equipment_type_other = #{record.dangerousEquipmentTypeOther,jdbcType=VARCHAR},
+      finite_space_dm = #{record.finiteSpaceDm,jdbcType=VARCHAR},
+      finite_space = #{record.finiteSpace,jdbcType=VARCHAR},
+      ammonia_refrigeration_dm = #{record.ammoniaRefrigerationDm,jdbcType=VARCHAR},
+      ammonia_refrigeration = #{record.ammoniaRefrigeration,jdbcType=VARCHAR},
+      drying_room_dm = #{record.dryingRoomDm,jdbcType=VARCHAR},
+      drying_room = #{record.dryingRoom,jdbcType=VARCHAR},
+      clean_workshop_dm = #{record.cleanWorkshopDm,jdbcType=VARCHAR},
+      clean_workshop = #{record.cleanWorkshop,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mlight.model.HazardCharacteristics">
+    update t_hazard_characteristics
+    <set>
+      <if test="basicId != null">
+        basic_id = #{basicId,jdbcType=INTEGER},
+      </if>
+      <if test="hazardousChemicalsDm != null">
+        hazardous_chemicals_dm = #{hazardousChemicalsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicals != null">
+        hazardous_chemicals = #{hazardousChemicals,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsTypeDm != null">
+        hazardous_chemicals_type_dm = #{hazardousChemicalsTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsType != null">
+        hazardous_chemicals_type = #{hazardousChemicalsType,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsTypeDescribeDm != null">
+        hazardous_chemicals_type_describe_dm = #{hazardousChemicalsTypeDescribeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsTypeDescribe != null">
+        hazardous_chemicals_type_describe = #{hazardousChemicalsTypeDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardousChemicalsTypeOther != null">
+        hazardous_chemicals_type_other = #{hazardousChemicalsTypeOther,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesDm != null">
+        major_hazard_sources_dm = #{majorHazardSourcesDm,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSources != null">
+        major_hazard_sources = #{majorHazardSources,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesTypeDm != null">
+        major_hazard_sources_type_dm = #{majorHazardSourcesTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesType != null">
+        major_hazard_sources_type = #{majorHazardSourcesType,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesLevalDm != null">
+        major_hazard_sources_leval_dm = #{majorHazardSourcesLevalDm,jdbcType=VARCHAR},
+      </if>
+      <if test="majorHazardSourcesLeval != null">
+        major_hazard_sources_leval = #{majorHazardSourcesLeval,jdbcType=VARCHAR},
+      </if>
+      <if test="technicsDm != null">
+        technics_dm = #{technicsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="technics != null">
+        technics = #{technics,jdbcType=VARCHAR},
+      </if>
+      <if test="technicsTypeDm != null">
+        technics_type_dm = #{technicsTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="technicsType != null">
+        technics_type = #{technicsType,jdbcType=VARCHAR},
+      </if>
+      <if test="emphasisHazardousChemicalsDm != null">
+        emphasis_hazardous_chemicals_dm = #{emphasisHazardousChemicalsDm,jdbcType=VARCHAR},
+      </if>
+      <if test="emphasisHazardousChemicals != null">
+        emphasis_hazardous_chemicals = #{emphasisHazardousChemicals,jdbcType=VARCHAR},
+      </if>
+      <if test="emphasisHazardousChemicalsNames != null">
+        emphasis_hazardous_chemicals_names = #{emphasisHazardousChemicalsNames,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEquipmentDm != null">
+        special_equipment_dm = #{specialEquipmentDm,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEquipment != null">
+        special_equipment = #{specialEquipment,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEquipmentTypeDm != null">
+        special_equipment_type_dm = #{specialEquipmentTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="specialEquipmentType != null">
+        special_equipment_type = #{specialEquipmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="combustibleDustDm != null">
+        combustible_dust_dm = #{combustibleDustDm,jdbcType=VARCHAR},
+      </if>
+      <if test="combustibleDust != null">
+        combustible_dust = #{combustibleDust,jdbcType=VARCHAR},
+      </if>
+      <if test="combustibleDustTypeDm != null">
+        combustible_dust_type_dm = #{combustibleDustTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="combustibleDustType != null">
+        combustible_dust_type = #{combustibleDustType,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentDm != null">
+        dangerous_equipment_dm = #{dangerousEquipmentDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipment != null">
+        dangerous_equipment = #{dangerousEquipment,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeDm != null">
+        dangerous_equipment_type_dm = #{dangerousEquipmentTypeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentType != null">
+        dangerous_equipment_type = #{dangerousEquipmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeDescribeDm != null">
+        dangerous_equipment_type_describe_dm = #{dangerousEquipmentTypeDescribeDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeDescribe != null">
+        dangerous_equipment_type_describe = #{dangerousEquipmentTypeDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="punchingPressMachine != null">
+        punching_press_machine = #{punchingPressMachine,jdbcType=VARCHAR},
+      </if>
+      <if test="punchingPressMachineDm != null">
+        punching_press_machine_dm = #{punchingPressMachineDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeOtherDm != null">
+        dangerous_equipment_type_other_dm = #{dangerousEquipmentTypeOtherDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousEquipmentTypeOther != null">
+        dangerous_equipment_type_other = #{dangerousEquipmentTypeOther,jdbcType=VARCHAR},
+      </if>
+      <if test="finiteSpaceDm != null">
+        finite_space_dm = #{finiteSpaceDm,jdbcType=VARCHAR},
+      </if>
+      <if test="finiteSpace != null">
+        finite_space = #{finiteSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="ammoniaRefrigerationDm != null">
+        ammonia_refrigeration_dm = #{ammoniaRefrigerationDm,jdbcType=VARCHAR},
+      </if>
+      <if test="ammoniaRefrigeration != null">
+        ammonia_refrigeration = #{ammoniaRefrigeration,jdbcType=VARCHAR},
+      </if>
+      <if test="dryingRoomDm != null">
+        drying_room_dm = #{dryingRoomDm,jdbcType=VARCHAR},
+      </if>
+      <if test="dryingRoom != null">
+        drying_room = #{dryingRoom,jdbcType=VARCHAR},
+      </if>
+      <if test="cleanWorkshopDm != null">
+        clean_workshop_dm = #{cleanWorkshopDm,jdbcType=VARCHAR},
+      </if>
+      <if test="cleanWorkshop != null">
+        clean_workshop = #{cleanWorkshop,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mlight.model.HazardCharacteristics">
+    update t_hazard_characteristics
+    set basic_id = #{basicId,jdbcType=INTEGER},
+      hazardous_chemicals_dm = #{hazardousChemicalsDm,jdbcType=VARCHAR},
+      hazardous_chemicals = #{hazardousChemicals,jdbcType=VARCHAR},
+      hazardous_chemicals_type_dm = #{hazardousChemicalsTypeDm,jdbcType=VARCHAR},
+      hazardous_chemicals_type = #{hazardousChemicalsType,jdbcType=VARCHAR},
+      hazardous_chemicals_type_describe_dm = #{hazardousChemicalsTypeDescribeDm,jdbcType=VARCHAR},
+      hazardous_chemicals_type_describe = #{hazardousChemicalsTypeDescribe,jdbcType=VARCHAR},
+      hazardous_chemicals_type_other = #{hazardousChemicalsTypeOther,jdbcType=VARCHAR},
+      major_hazard_sources_dm = #{majorHazardSourcesDm,jdbcType=VARCHAR},
+      major_hazard_sources = #{majorHazardSources,jdbcType=VARCHAR},
+      major_hazard_sources_type_dm = #{majorHazardSourcesTypeDm,jdbcType=VARCHAR},
+      major_hazard_sources_type = #{majorHazardSourcesType,jdbcType=VARCHAR},
+      major_hazard_sources_leval_dm = #{majorHazardSourcesLevalDm,jdbcType=VARCHAR},
+      major_hazard_sources_leval = #{majorHazardSourcesLeval,jdbcType=VARCHAR},
+      technics_dm = #{technicsDm,jdbcType=VARCHAR},
+      technics = #{technics,jdbcType=VARCHAR},
+      technics_type_dm = #{technicsTypeDm,jdbcType=VARCHAR},
+      technics_type = #{technicsType,jdbcType=VARCHAR},
+      emphasis_hazardous_chemicals_dm = #{emphasisHazardousChemicalsDm,jdbcType=VARCHAR},
+      emphasis_hazardous_chemicals = #{emphasisHazardousChemicals,jdbcType=VARCHAR},
+      emphasis_hazardous_chemicals_names = #{emphasisHazardousChemicalsNames,jdbcType=VARCHAR},
+      special_equipment_dm = #{specialEquipmentDm,jdbcType=VARCHAR},
+      special_equipment = #{specialEquipment,jdbcType=VARCHAR},
+      special_equipment_type_dm = #{specialEquipmentTypeDm,jdbcType=VARCHAR},
+      special_equipment_type = #{specialEquipmentType,jdbcType=VARCHAR},
+      combustible_dust_dm = #{combustibleDustDm,jdbcType=VARCHAR},
+      combustible_dust = #{combustibleDust,jdbcType=VARCHAR},
+      combustible_dust_type_dm = #{combustibleDustTypeDm,jdbcType=VARCHAR},
+      combustible_dust_type = #{combustibleDustType,jdbcType=VARCHAR},
+      dangerous_equipment_dm = #{dangerousEquipmentDm,jdbcType=VARCHAR},
+      dangerous_equipment = #{dangerousEquipment,jdbcType=VARCHAR},
+      dangerous_equipment_type_dm = #{dangerousEquipmentTypeDm,jdbcType=VARCHAR},
+      dangerous_equipment_type = #{dangerousEquipmentType,jdbcType=VARCHAR},
+      dangerous_equipment_type_describe_dm = #{dangerousEquipmentTypeDescribeDm,jdbcType=VARCHAR},
+      dangerous_equipment_type_describe = #{dangerousEquipmentTypeDescribe,jdbcType=VARCHAR},
+      punching_press_machine = #{punchingPressMachine,jdbcType=VARCHAR},
+      punching_press_machine_dm = #{punchingPressMachineDm,jdbcType=VARCHAR},
+      dangerous_equipment_type_other_dm = #{dangerousEquipmentTypeOtherDm,jdbcType=VARCHAR},
+      dangerous_equipment_type_other = #{dangerousEquipmentTypeOther,jdbcType=VARCHAR},
+      finite_space_dm = #{finiteSpaceDm,jdbcType=VARCHAR},
+      finite_space = #{finiteSpace,jdbcType=VARCHAR},
+      ammonia_refrigeration_dm = #{ammoniaRefrigerationDm,jdbcType=VARCHAR},
+      ammonia_refrigeration = #{ammoniaRefrigeration,jdbcType=VARCHAR},
+      drying_room_dm = #{dryingRoomDm,jdbcType=VARCHAR},
+      drying_room = #{dryingRoom,jdbcType=VARCHAR},
+      clean_workshop_dm = #{cleanWorkshopDm,jdbcType=VARCHAR},
+      clean_workshop = #{cleanWorkshop,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

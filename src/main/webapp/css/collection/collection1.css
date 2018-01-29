@@ -1,0 +1,67 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'microsoft yahei', Arial, Helvetica, sans-serif;
+    color: #313131;
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+}
+
+.h4, .h5, .h6, h4, h5, h6 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+    border: 1px solid #e6e6e6;
+}
+
+.tabletitle1 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.firsttd {
+    width: 150px;
+    background: #f6f6f6;
+}
+
+.shuoming {
+    color: #d35f01;
+}
+
+.bggray {
+    background: #f6f6f6;
+    color: #027ace;
+}
+
+.checkbox {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    float: left;
+    margin-right: 20px;
+}
+
+.checkbox + .checkbox, .radio + .radio {
+    margin-top: 0px;
+}
+
+.checkbox label, .radio label {
+    min-height: 25px;
+}
+
+.form-control {
+    border-radius: 0px;
+}
